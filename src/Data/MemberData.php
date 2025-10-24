@@ -22,16 +22,15 @@ class MemberData extends Data
         public CarbonImmutable|string|Optional $updated_at,
         // Capture extra fields that EasyVerein may return without strict typing
         public array|Optional $extra = []
-    ) {
-    }
+    ) {}
 
     public static function fromResponseArray(array $attributes): self
     {
         // Move unknown fields into $extra while mapping common ones
-        $known = ['id','first_name','last_name','email','status','created_at','updated_at'];
+        $known = ['id', 'first_name', 'last_name', 'email', 'status', 'created_at', 'updated_at'];
         $extra = [];
         foreach ($attributes as $key => $value) {
-            if (!in_array($key, $known, true)) {
+            if (! in_array($key, $known, true)) {
                 $extra[$key] = $value;
             }
         }

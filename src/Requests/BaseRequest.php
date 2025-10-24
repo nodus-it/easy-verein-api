@@ -12,7 +12,6 @@ use Saloon\Http\Request;
  */
 abstract class BaseRequest extends Request
 {
-    /** @var Method */
     protected Method $method = Method::GET;
 
     /**

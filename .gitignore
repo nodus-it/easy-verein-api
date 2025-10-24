@@ -24,3 +24,4 @@ Thumbs.db
 
 # Local developer playground (ignored)
 /local/
+/playground.php

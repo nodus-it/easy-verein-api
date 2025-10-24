@@ -1,0 +1,52 @@
+includes:
+    - ./vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: 8
+    paths:
+        - src
+        - config
+    
+    # Exclude files/directories from analysis
+    excludePaths:
+        - vendor
+        - tests/Pest.php
+    
+    # Check missing typehints
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    
+    # Laravel specific configurations
+    checkModelProperties: true
+    checkOctaneCompatibility: true
+    
+    # Additional rules
+    reportUnmatchedIgnoredErrors: false
+    
+    # Ignore specific errors (can be customized)
+    ignoreErrors:
+        # Ignore Laravel facade access
+        - '#Call to an undefined method Illuminate\\.*#'
+        
+        # Ignore dynamic properties on Laravel models
+        - '#Access to an undefined property Illuminate\\Database\\Eloquent\\Model::\$.*#'
+        
+        # Ignore missing return types for Laravel service provider methods
+        - '#Method .* has no return type specified#'
+    
+    # Bootstrap file for Laravel
+    bootstrapFiles:
+        - vendor/autoload.php
+    
+    # Memory limit
+    memoryLimitFile: .phpstan-memory-limit
+    
+    # Parallel processing
+    parallel:
+        jobSize: 20
+        maximumNumberOfProcesses: 32
+        minimumNumberOfJobsPerProcess: 2
+    
+    # Stub files for better analysis
+    stubFiles: []
+    

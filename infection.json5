@@ -1,0 +1,129 @@
+{
+    "$schema": "https://raw.githubusercontent.com/infection/infection/master/resources/schema.json",
+    
+    // Source code directories to mutate
+    "source": {
+        "directories": [
+            "src"
+        ]
+    },
+    
+    // Test framework configuration
+    "testFramework": "pest",
+    "testFrameworkOptions": "--colors=never",
+    
+    // Timeout settings
+    "timeout": 30,
+    "processTimeout": 60,
+    
+    // Mutation score thresholds
+    "minMsi": 80,        // Minimum Mutation Score Indicator
+    "minCoveredMsi": 85, // Minimum Covered Code MSI
+    
+    // Logging configuration
+    "logs": {
+        "text": "var/infection.log",
+        "html": "var/infection.html",
+        "summary": "var/infection-summary.log",
+        "json": "var/infection.json",
+        "gitlab": "var/infection-gitlab.json",
+        "debug": "var/infection-debug.log",
+        "perMutator": "var/infection-per-mutator.md"
+    },
+    
+    // Mutators configuration
+    "mutators": {
+        "@default": true,
+        "@function_signature": false,
+        "@number": true,
+        "@operator": true,
+        "@conditional": true,
+        "@removal": true,
+        "@return_value": true,
+        "@cast": true,
+        "@regex": true,
+        
+        // Disable specific mutators that might not be relevant
+        "Concat": false,
+        "ConcatOperandRemoval": false,
+        "UnwrapArrayValues": false,
+        "UnwrapArrayKeys": false,
+        
+        // Configure specific mutators
+        "TrueValue": {
+            "ignore": [
+                "NodusIT\\EasyVereinApi\\Requests\\BaseRequest::defaultHeaders"
+            ]
+        },
+        "FalseValue": {
+            "ignore": [
+                "NodusIT\\EasyVereinApi\\Requests\\BaseRequest::defaultHeaders"
+            ]
+        },
+        
+        // Ignore mutations in specific methods/classes
+        "MethodCallRemoval": {
+            "ignore": [
+                "NodusIT\\EasyVereinApi\\EasyVereinApiServiceProvider::register",
+                "NodusIT\\EasyVereinApi\\EasyVereinApiServiceProvider::boot"
+            ]
+        }
+    },
+    
+    // Files/directories to ignore
+    "ignore": [
+        "src/Data/*",
+        "playground.php"
+    ],
+    
+    // Bootstrap file
+    "bootstrap": "vendor/autoload.php",
+    
+    // Initial tests PHP options
+    "initialTestsPhpOptions": "-d memory_limit=1024M",
+    
+    // Mutant PHP options
+    "testFrameworkExtraOptions": "--stop-on-failure",
+    
+    // Only covered code
+    "onlyCovered": true,
+    
+    // Skip initial tests
+    "skipInitialTests": false,
+    
+    // Threads
+    "threads": 4,
+    
+    // Dry run
+    "dryRun": false,
+    
+    // Git diff filter
+    "gitDiffFilter": false,
+    "gitDiffBase": "origin/main",
+    
+    // Existing coverage
+    "existingCoverage": "coverage",
+    "coverageBasePath": "var/coverage",
+    
+    // No progress
+    "noProgress": false,
+    
+    // Formatter
+    "formatter": "progress",
+    
+    // Show mutations
+    "showMutations": true,
+    
+    // Sort
+    "sort": "default",
+    
+    // Execute only
+    "executeOnly": false,
+    
+    // Map source class to test class
+    "mapSourceClassToTestClass": {
+        "NodusIT\\EasyVereinApi\\Requests\\Member\\MemberShowRequest": [
+            "tests/MemberShowRequestTest.php"
+        ]
+    }
+}

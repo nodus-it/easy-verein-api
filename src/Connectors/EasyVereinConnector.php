@@ -2,11 +2,9 @@
 
 namespace NodusIT\EasyVereinApi\Connectors;
 
-use Saloon\Http\Connector;
-use Saloon\Http\Response;
-use Saloon\Enums\Method;
 use Saloon\Contracts\Authenticator;
 use Saloon\Http\Auth\TokenAuthenticator;
+use Saloon\Http\Connector;
 
 class EasyVereinConnector extends Connector
 {

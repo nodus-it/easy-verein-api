@@ -10,7 +10,7 @@ class EasyVereinApiServiceProvider extends ServiceProvider
     public function register(): void
     {
         // Merge default config
-        $this->mergeConfigFrom(__DIR__ . '/../config/easy-verein.php', 'easy-verein');
+        $this->mergeConfigFrom(__DIR__.'/../config/easy-verein.php', 'easy-verein');
 
         // Bind the connector as a singleton for convenient resolution
         $this->app->singleton(EasyVereinConnector::class, function ($app) {
@@ -28,7 +28,7 @@ class EasyVereinApiServiceProvider extends ServiceProvider
     {
         // Publish config
         $this->publishes([
-            __DIR__ . '/../config/easy-verein.php' => config_path('easy-verein.php'),
+            __DIR__.'/../config/easy-verein.php' => config_path('easy-verein.php'),
         ], 'easy-verein-config');
     }
 }
