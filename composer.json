@@ -1,0 +1,51 @@
+{
+  "name": "nodus-it/easy-verein-api",
+  "description": "Laravel package: EasyVerein API client built on Saloon",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "laravel",
+    "package",
+    "saloon",
+    "api-client",
+    "easyverein"
+  ],
+  "authors": [
+    {
+      "name": "NODUS IT",
+      "homepage": "https://www.nodus-it.de"
+    }
+  ],
+  "require": {
+    "php": ">=8.2",
+    "illuminate/support": "^10.0|^11.0",
+    "saloonphp/saloon": "^3.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^8.0|^9.0",
+    "phpunit/phpunit": "^10.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "NodusIT\\EasyVereinApi\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "NodusIT\\EasyVereinApi\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "NodusIT\\EasyVereinApi\\EasyVereinApiServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "test:coverage": "phpunit --coverage-text"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}

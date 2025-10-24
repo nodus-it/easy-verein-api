@@ -1,0 +1,23 @@
+# Composer
+/vendor/
+/composer.lock
+
+# PHPUnit
+/.phpunit.cache/
+/junit.xml
+/coverage/
+
+# IDE
+/.idea/
+/.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# PHP-CS-Fixer / Coding standards
+/.php-cs-fixer.cache
+
+# Env
+/.env
